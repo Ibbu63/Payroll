@@ -56,3 +56,59 @@ Built as an academic project with **real-world architecture and best practices**
 
 ## 📁 Project Structure
 
+payroll/
+│
+├── backend/
+│ ├── server.js
+│ ├── routes/
+│ ├── controllers/
+│ ├── models/
+│ ├── middleware/
+│ └── config/
+│
+├── frontend/
+│ ├── src/
+│ ├── pages/
+│ ├── components/
+│ ├── services/
+│ └── styles/
+│
+└── README.md
+
+---
+
+🔒 Security Practices
+
+Password hashing
+
+Token-based authentication
+
+Protected routes
+
+Backend validation
+
+Environment variables for secrets
+
+---
+
+📌 Purpose of the Project
+
+This project was developed to demonstrate:
+
+Full-stack development skills
+
+Secure authentication and role handling
+
+Real-world payroll workflows
+
+Clean architecture and scalable design
+
+---
+
+👤 Author
+
+Mohammed Ibrahim
+Computer Science Engineering
+Payroll Management System – Project
+
+---
