@@ -1,0 +1,181 @@
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.timeline-card {
+  background: #0f172a;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.timeline-card.active {
+  border: 1px solid #2563eb;
+}
+
+.timeline-card .tag {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.timeline-card strong {
+  display: block;
+  margin-top: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.stat-card {
+  background: #0f172a;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.positive {
+  color: #22c55e;
+}
+
+.negative {
+  color: #ef4444;
+}
+
+.alert {
+  background: #020617;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.alert.danger {
+  border-left: 4px solid #ef4444;
+}
+
+.alert.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.alert.success {
+  border-left: 4px solid #22c55e;
+}
+
+.primary-btn.full {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* ===== Monthly / Quarterly Toggle ===== */
+
+.toggle-group {
+  display: inline-flex;
+  background: #020617;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: #e5e7eb;
+}
+
+.toggle-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+/* ===== Charts ===== */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.chart-card {
+  padding: 18px;
+}
+
+/* ===== Tooltip ===== */
+.chart-tooltip {
+  background: #020617;
+  border: 1px solid #1f2937;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  font-size: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tooltip-row .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ===== Disabled Finalize Button ===== */
+.primary-btn:disabled {
+  background: #1f2937;
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.stat-card.highlight {
+  border: 1px solid #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+.primary-btn:disabled {
+  background: #1f2937;
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.success-badge {
+  background: #22c55e;
+  color: #022c22;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.warning-badge {
+  background: #f59e0b;
+  color: #451a03;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.primary-btn.locked {
+  background: #020617;
+  border: 1px solid #22c55e;
+  color: #22c55e;
+  cursor: not-allowed;
+}

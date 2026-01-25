@@ -1,0 +1,176 @@
+/* =========================
+   LOGIN PAGE SCOPE
+   ========================= */
+
+.login-page {
+  min-height: 100vh;
+}
+
+/* Container */
+.login-page .login-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b1b2b, #050d17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card */
+.login-page .login-card {
+  background: #0f1f33;
+  width: 420px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.login-page .login-card h2 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.login-page .subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #9bb3cc;
+  margin-bottom: 20px;
+}
+
+/* Role selector */
+.login-page .role-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.login-page .role-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  background: #162a42;
+  border: 1px solid #1f3a5a;
+  color: #cfe6ff;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.login-page .role-btn.active {
+  background: #0a84ff;
+  border-color: #0a84ff;
+  color: #ffffff;
+}
+
+.login-page .role-btn svg {
+  font-size: 18px;
+}
+
+/* Inputs */
+.login-page .input-group {
+  margin-bottom: 15px;
+}
+
+.login-page .input-group label {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+.login-page .input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.login-page .input-icon input {
+  width: 100%;
+  padding: 12px 40px;
+  padding-left: 42px;
+  padding-right: 42px;
+  border-radius: 10px;
+  border: none;
+  background: #162a42;
+  color: #ffffff;
+  outline: none;
+}
+
+.login-page .left-icon {
+  position: absolute;
+  left: 14px;
+  color: #9bb3cc;
+  font-size: 14px;
+}
+
+.login-page .right-icon {
+  position: absolute;
+  right: 14px;
+  color: #9bb3cc;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Options */
+.login-page .options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+/* Button */
+.login-page .login-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #0a84ff;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-page .login-btn:hover {
+  background: #006edc;
+}
+
+/* Forgot password */
+.login-page .forgot-wrapper {
+  margin-top: 6px;
+  text-align: right;
+}
+
+.login-page .forgot-link {
+  font-size: 12px;
+  color: #4da3ff;
+  cursor: pointer;
+}
+
+.login-page .forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Request access */
+.login-page .request {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #9bb3cc;
+}
+
+.login-page .request span {
+  color: #4da3ff;
+  cursor: pointer;
+}
+
+.login-page .request span:hover {
+  text-decoration: underline;
+}
