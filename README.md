@@ -78,37 +78,20 @@ payroll/
 ---
 
 🔒 Security Practices
-
-Password hashing
-
-Token-based authentication
-
-Protected routes
-
-Backend validation
-
-Environment variables for secrets
-
----
-
+This project follows industry-standard security measures to ensure data protection and safe access control:
+Password Hashing – User passwords are securely hashed before storage
+Token-Based Authentication – JWT is used for session management
+Protected Routes – Role-based access control for Admin, HR, and Employees
+Backend Validation – Server-side checks to prevent invalid or malicious inputs
+Environment Variables – Sensitive credentials are stored securely using .env files
 📌 Purpose of the Project
-
-This project was developed to demonstrate:
-
-Full-stack development skills
-
-Secure authentication and role handling
-
-Real-world payroll workflows
-
-Clean architecture and scalable design
-
----
-
+The Payroll Management System was developed to demonstrate:
+Full-Stack Development Skills using modern frontend and backend technologies
+Secure Authentication & Role Management with real-world access logic
+Practical Payroll Workflows such as salary processing and approvals
+Clean Architecture that supports scalability and maintainability
 👤 Author
-
 Mohammed Ibrahim
 Computer Science Engineering
-Payroll Management System – Project
-
+Payroll Management System
 ---
