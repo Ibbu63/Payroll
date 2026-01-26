@@ -105,6 +105,6 @@ The Payroll Management System was developed to demonstrate:
 
 **Mohammed Ibrahim**  
 Computer Science Engineering  
-**Payroll Management System – Academic Project**
+**Payroll Management System **
 
 ---
