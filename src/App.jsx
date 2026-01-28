@@ -17,26 +17,29 @@ import Disbursement from "./pages/payroll/Disbursement";
 import Tax from "./pages/payroll/Tax";
 import Analytics from "./pages/payroll/Analytics";
 
+// HR
+import HRLayout from "./pages/hr/HRLayout";
+import HRDashboard from "./pages/hr/HRDashboard";
+import Employees from "./pages/hr/Employees";
+import Approvals from "./pages/hr/Approvals";
+
 function App() {
   return (
     <Routes>
       {/* LOGIN */}
       <Route path="/" element={<Login />} />
 
-        {/* ACCESS REQUEST (PUBLIC) */}
-  <Route path="/access-request" element={<AccessRequest />} />
+      {/* ACCESS REQUEST (PUBLIC) */}
+      <Route path="/access-request" element={<AccessRequest />} />
 
       {/* ADMIN */}
       <Route path="/admin" element={<AdminLayout />}>
-        {/* DEFAULT ADMIN PAGE */}
         <Route index element={<Navigate to="dashboard" replace />} />
-
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="users" element={<UserManagement />} />
         <Route path="payroll" element={<PayrollOversight />} />
         <Route path="audit-logs" element={<PayrollAuditLogs />} />
         <Route path="settings" element={<SystemSettings />} />
-        <Route path="/admin/users" element={<UserManagement />} />
       </Route>
 
       {/* PAYROLL */}
@@ -45,6 +48,14 @@ function App() {
       <Route path="/payroll/disbursement" element={<Disbursement />} />
       <Route path="/payroll/tax" element={<Tax />} />
       <Route path="/payroll/analytics" element={<Analytics />} />
+
+      {/* HR */}
+      <Route path="/hr" element={<HRLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<HRDashboard />} />
+        <Route path="employees" element={<Employees />} />
+        <Route path="approvals" element={<Approvals />} />
+      </Route>
 
       {/* FALLBACK */}
       <Route path="*" element={<Navigate to="/" />} />

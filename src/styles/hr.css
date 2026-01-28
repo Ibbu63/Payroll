@@ -1,0 +1,224 @@
+/* ===== ROOT COLORS ===== */
+:root {
+  --bg-main: #0b1220;
+  --bg-sidebar: #0f172a;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --accent: #2563eb;
+}
+
+/* ===== APP LAYOUT ===== */
+.hr-app {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #020617, #0b1220);
+}
+
+/* ===== SIDEBAR ===== */
+.hr-sidebar {
+  width: 260px;
+  /* FIXED SIDEBAR WIDTH */
+  background: linear-gradient(180deg, #020617, #0f172a);
+  border-right: 1px solid var(--border-soft);
+  padding: 24px 18px;
+  flex-shrink: 0;
+  /* CRITICAL */
+}
+
+.hr-sidebar-header h2 {
+  margin: 0;
+  color: white;
+}
+
+.hr-sidebar-header span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ===== NAV ===== */
+.hr-nav {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hr-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hr-nav-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hr-nav-link:hover {
+  background: rgba(37, 99, 235, 0.15);
+  color: white;
+}
+
+.hr-nav-link.active {
+  background: linear-gradient(90deg,
+      rgba(37, 99, 235, 0.35),
+      rgba(37, 99, 235, 0.15));
+  color: white;
+}
+
+/* ===== MAIN CONTENT ===== */
+.hr-main {
+  flex: 1;
+  /* TAKE REMAINING SPACE */
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.hr-header {
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* ===== CONTENT ===== */
+.hr-content {
+  padding: 32px;
+  max-width: 1400px;
+}
+
+/* ===== DASHBOARD ===== */
+.hr-page-header h2 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.hr-subtext {
+  color: var(--text-secondary);
+}
+
+.hr-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.hr-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.hr-dashboard-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.hr-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .hr-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hr-stats-grid,
+  .hr-dashboard-sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   KPI NUMBER TYPOGRAPHY
+   =============================== */
+
+.hr-stat-value {
+  font-size: 36px;
+  /* Bigger numbers */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 10px 0 6px;
+  color: #ffffff;
+}
+
+/* Currency / percentage look */
+.hr-stat-value::before {
+  content: "";
+}
+
+/* Supporting text under numbers */
+.hr-stat-foot {
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.2px;
+}
+
+/* Titles inside cards */
+.hr-stat-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #c7d2fe;
+  /* subtle bluish white */
+  letter-spacing: 0.3px;
+}
+
+/* ===============================
+   ALERTS & INSIGHTS LIST FIX
+   =============================== */
+
+.hr-card ul {
+  list-style: none;
+  /* remove default bullets */
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.hr-card li {
+  position: relative;
+  padding-left: 22px;
+  /* space for custom bullet */
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+/* Custom bullet */
+.hr-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* ===============================
+   PAGE HEADER SPACING FIX
+   =============================== */
+
+.hr-page-header {
+  margin-bottom: 24px;
+  /* increases gap before table/cards */
+}
