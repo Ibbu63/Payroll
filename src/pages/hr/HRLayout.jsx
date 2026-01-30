@@ -21,47 +21,47 @@ const HRLayout = () => {
 
         <nav className="hr-nav">
           <NavLink to="/hr/dashboard" className="hr-nav-link">
-            <LayoutDashboard />
+            <LayoutDashboard size={18} />
             <span>Dashboard</span>
           </NavLink>
 
           <NavLink to="/hr/employees" className="hr-nav-link">
-            <Users />
+            <Users size={18} />
             <span>Employees</span>
           </NavLink>
 
           <NavLink to="/hr/approvals" className="hr-nav-link">
-            <CheckCircle />
+            <CheckCircle size={18} />
             <span>Approvals</span>
           </NavLink>
 
           <NavLink to="/hr/reports" className="hr-nav-link">
-            <BarChart3 />
+            <BarChart3 size={18} />
             <span>Reports</span>
           </NavLink>
 
           <NavLink to="/hr/loans" className="hr-nav-link">
-            <Landmark />
+            <Landmark size={18} />
             <span>Loans</span>
           </NavLink>
 
           <NavLink to="/hr/requests" className="hr-nav-link">
-            <ClipboardList />
+            <ClipboardList size={18} />
             <span>Requests</span>
           </NavLink>
         </nav>
       </aside>
 
-      {/* MAIN CONTENT */}
-      <section className="hr-main">
+      {/* MAIN */}
+      <div className="hr-main">
         <header className="hr-header">
           <h1>Human Resources</h1>
         </header>
 
-        <div className="hr-content">
+        <main className="hr-content">
           <Outlet />
-        </div>
-      </section>
+        </main>
+      </div>
     </div>
   );
 };

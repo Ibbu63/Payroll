@@ -1,4 +1,3 @@
-/* ===== ROOT COLORS ===== */
 :root {
   --bg-main: #0b1220;
   --bg-sidebar: #0f172a;
@@ -9,35 +8,37 @@
   --accent: #2563eb;
 }
 
-/* ===== APP LAYOUT ===== */
+/* APP */
 .hr-app {
   display: flex;
   min-height: 100vh;
   background: linear-gradient(180deg, #020617, #0b1220);
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 .hr-sidebar {
   width: 260px;
-  /* FIXED SIDEBAR WIDTH */
   background: linear-gradient(180deg, #020617, #0f172a);
   border-right: 1px solid var(--border-soft);
   padding: 24px 18px;
-  flex-shrink: 0;
-  /* CRITICAL */
 }
 
 .hr-sidebar-header h2 {
   margin: 0;
   color: white;
+  font-size: 22px;
+  letter-spacing: 0.4px;
 }
+
 
 .hr-sidebar-header span {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
+  margin-top: 4px;
+  display: block;
+  letter-spacing: 0.3px;
 }
 
-/* ===== NAV ===== */
 .hr-nav {
   margin-top: 32px;
   display: flex;
@@ -46,70 +47,63 @@
 }
 
 .hr-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   padding: 12px 16px;
   border-radius: 12px;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.hr-nav-link svg {
-  width: 18px;
-  height: 18px;
-}
-
-.hr-nav-link:hover {
-  background: rgba(37, 99, 235, 0.15);
-  color: white;
 }
 
 .hr-nav-link.active {
-  background: linear-gradient(90deg,
-      rgba(37, 99, 235, 0.35),
-      rgba(37, 99, 235, 0.15));
+  background: rgba(37, 99, 235, 0.25);
   color: white;
 }
 
-/* ===== MAIN CONTENT ===== */
+/* MAIN */
 .hr-main {
   flex: 1;
-  /* TAKE REMAINING SPACE */
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
-/* ===== HEADER ===== */
 .hr-header {
   padding: 20px 32px;
   border-bottom: 1px solid var(--border-soft);
-  background: rgba(2, 6, 23, 0.6);
-  backdrop-filter: blur(8px);
 }
 
-/* ===== CONTENT ===== */
 .hr-content {
   padding: 32px;
-  max-width: 1400px;
 }
 
-/* ===== DASHBOARD ===== */
+/* PAGE */
+.hr-page-header {
+  font-size: 28px;
+}
+
+.hr-page-subheader {
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+.hr-page-header {
+  margin-bottom: 32px;
+  /* ✅ THIS fixes the gap */
+}
+
 .hr-page-header h2 {
   font-size: 28px;
   margin-bottom: 6px;
 }
 
 .hr-subtext {
+  font-size: 16px;
   color: var(--text-secondary);
+  margin-top: 0px;
 }
 
+/* STATS */
 .hr-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
   margin-top: 28px;
 }
 
@@ -120,6 +114,23 @@
   padding: 22px;
 }
 
+.hr-stat-title {
+  color: #c7d2fe;
+  font-size: 14px;
+}
+
+.hr-stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.hr-stat-foot {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* LOWER */
 .hr-dashboard-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -134,7 +145,32 @@
   padding: 22px;
 }
 
-/* ===== RESPONSIVE ===== */
+.hr-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.hr-card li {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.hr-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ===== TABLE CARD TOP GAP FIX ===== */
+.hr-card:has(.hr-table) {
+  padding-top: 14px;
+  /* reduced from 22px */
+}
+
+/* RESPONSIVE */
 @media (max-width: 1200px) {
   .hr-stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -142,7 +178,6 @@
 }
 
 @media (max-width: 768px) {
-
   .hr-stats-grid,
   .hr-dashboard-sections {
     grid-template-columns: 1fr;
@@ -150,75 +185,592 @@
 }
 
 /* ===============================
-   KPI NUMBER TYPOGRAPHY
+   CREATIVE TABLE ENHANCEMENTS
    =============================== */
 
-.hr-stat-value {
-  font-size: 36px;
-  /* Bigger numbers */
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin: 10px 0 6px;
-  color: #ffffff;
+/* Extra spacing between header row and first data row */
+.hr-table thead tr {
+  height: 52px;
+}
+/* ===== TABLE HEADERS (Employees + Approvals) ===== */
+.hr-table th {
+  text-align: left;
+  font-size: 18.5px; /* ⬆ slightly bigger for hierarchy */
+  font-weight: 600;
+  color: #dbeafe; /* brighter but still enterprise */
+  padding: 14px 16px 18px; /* ⬇ top | ↔ sides | ⬆ bottom */
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  vertical-align: middle;
 }
 
-/* Currency / percentage look */
-.hr-stat-value::before {
+/* Table row as soft card */
+.hr-table tbody tr {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Spacing between rows */
+.hr-table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+/* Hover elevation */
+.hr-table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Left accent strip */
+.hr-table tbody tr::before {
   content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2563eb, #38bdf8);
+  opacity: 0.8;
 }
 
-/* Supporting text under numbers */
-.hr-stat-foot {
-  font-size: 13px;
-  color: var(--text-secondary);
-  letter-spacing: 0.2px;
+.hr-table td {
+  padding: 18px 16px;
+  color: #e5e7eb;
+  font-size: 15px;
+  vertical-align: middle;
 }
 
-/* Titles inside cards */
-.hr-stat-title {
-  font-size: 14px;
-  font-weight: 500;
+/* Employee name emphasis */
+.hr-table td:first-child {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+/* Role / request secondary text feel */
+.hr-table td:nth-child(3) {
   color: #c7d2fe;
-  /* subtle bluish white */
+}
+
+/* ===============================
+   STATUS BADGES (ENHANCED)
+   =============================== */
+
+.hr-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
   letter-spacing: 0.3px;
 }
 
-/* ===============================
-   ALERTS & INSIGHTS LIST FIX
-   =============================== */
-
-.hr-card ul {
-  list-style: none;
-  /* remove default bullets */
-  padding: 0;
-  margin: 14px 0 0;
+/* Active */
+.status-active {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.25),
+    rgba(16, 185, 129, 0.12)
+  );
+  color: #34d399;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
 }
 
-.hr-card li {
+/* On Leave */
+.status-leave {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.25),
+    rgba(245, 158, 11, 0.12)
+  );
+  color: #fbbf24;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
+}
+
+/* Pending */
+.status-pending {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.25),
+    rgba(59, 130, 246, 0.12)
+  );
+  color: #93c5fd;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25);
+}
+
+/* Approved */
+.status-approved {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.25),
+    rgba(34, 197, 94, 0.12)
+  );
+  color: #4ade80;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.25);
+}
+/* ===== TABLE HEADERS (Employees + Approvals) ===== */
+
+
+
+/* ===== EMPLOYEE COLUMN ALIGNMENT FIX ===== */
+
+/* Make Employee header align with avatar + name */
+
+/* Ensure employee cell spacing is consistent */
+.hr-employee-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hr-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;              /* ✅ proper spacing between icon and text */
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hr-nav-link svg {
+  flex-shrink: 0;         /* ✅ prevents icon from collapsing */
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+}
+
+.hr-nav-link span {
+  font-weight: 500;
+  font-size: 15px;        /* ✅ readable, enterprise size */
+  letter-spacing: 0.2px;
+}
+
+/* ===== DASHBOARD CHARTS ===== */
+
+.hr-dashboard-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.hr-chart-card h3 {
+  margin-bottom: 16px;
+}
+
+.hr-chart-wrapper {
+  height: 260px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hr-dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Loans table should NOT reserve avatar space */
+.loans-table .hr-table th:first-child {
+  padding-left: 16px;
+}
+
+.loans-table .hr-table td:first-child {
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+/* ===============================
+   LOANS – FIX LEFT GAP BUT KEEP STRIP
+   =============================== */
+
+/* Move content closer while keeping the blue strip */
+.loans-table .hr-table th:first-child,
+.loans-table .hr-table td:first-child {
+  padding-left: 28px;   /* 16px content + 12px visual breathing */
+}
+
+/* Reposition the blue strip slightly inward */
+.loans-table .hr-table tbody tr::before {
+  left: 12px;
+}
+
+/* ===============================
+   LOANS – ALIGN WITH OTHER TABLES
+   =============================== */
+
+/* Invisible avatar slot for Loans */
+.loans-table .hr-avatar-placeholder {
+  width: 0px;
+  height: 28px;
+  flex-shrink: 0;
+  visibility: hidden;
+}
+
+/* ===============================
+   LOANS HEADER + ROW ALIGNMENT
+   =============================== */
+
+/* Match Employee header with row content (strip + placeholder) */
+.loans-table .hr-table th:first-child {
+  padding-left: 45px; /* strip (4px) + gap + placeholder width */
+  padding-right: -10px;
+}
+
+
+
+/* Ensure row cell matches exactly */
+.loans-table .hr-table td:first-child {
+  padding-left: 40px;
+}
+
+/* ===============================
+   LOANS – COLUMN SPACING TUNE
+   =============================== */
+
+/* Reduce left padding for Loan Amount column */
+.loans-table .hr-table th:nth-child(2) {
+  padding-left: 2px;   /* was effectively ~16px */
+}
+
+/* Rejected */
+.status-rejected {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.25),
+    rgba(239, 68, 68, 0.12)
+  );
+  color: #f87171;
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.25);
+}
+
+
+/* ===============================
+   REPORTS TABLE – ALIGNMENT FIX
+   =============================== */
+
+/* Keep blue strip but remove avatar gap */
+.reports-table .hr-table th:first-child {
+  padding-left: 16px;
+}
+
+.reports-table .hr-table td:first-child {
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+/* ===============================
+   REPORTS – REMOVE ROW STRIP
+   =============================== */
+
+.reports-table .hr-table tbody tr::before {
+  display: none;
+}
+
+/* ===============================
+   REPORTS – CELL STRIP (NO GAP)
+   =============================== */
+
+.reports-table .hr-table td:first-child {
   position: relative;
-  padding-left: 22px;
-  /* space for custom bullet */
-  margin-bottom: 10px;
-  line-height: 1.6;
+  padding-left: 28px; /* space only for strip */
+  font-weight: 600;
+}
+
+.reports-table .hr-table td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2563eb, #38bdf8);
+}
+
+.reports-table .hr-table th:first-child {
+  padding-left: 28px;
+}
+
+/* ===============================
+   REPORTS – FILTERS & CONTROLS
+   =============================== */
+
+.hr-reports-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.hr-filter-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hr-filter {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.hr-filter option {
+  background: #020617;
+}
+
+.hr-filter-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hr-filter-search {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  min-width: 220px;
+  outline: none;
+}
+
+.hr-filter-search::placeholder {
+  color: var(--text-secondary);
+}
+
+.hr-primary-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.9),
+    rgba(59, 130, 246, 0.9)
+  );
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hr-primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hr-reports-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hr-filter-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hr-filter-search {
+    flex: 1;
+  }
+}
+
+/* ===============================
+   REPORTS – DOWNLOAD BUTTON
+   =============================== */
+
+.hr-download-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.25),
+    rgba(59, 130, 246, 0.12)
+  );
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+/* Hover */
+.hr-download-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.35),
+    rgba(59, 130, 246, 0.18)
+  );
+  color: #bfdbfe;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.25);
+}
+
+/* Active */
+.hr-download-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Optional: disabled state */
+.hr-download-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== REPORTS CHARTS SPACING FIX ===== */
+.reports-charts {
+  margin-bottom: 36px; /* creates clean separation from filters */
+}
+
+/* ===============================
+   REQUESTS – DISABLE ROW STRIP
+   =============================== */
+
+.requests-table .hr-table tbody tr::before {
+  display: none;
+}
+
+/* ===============================
+   REQUESTS – CELL STRIP (ALIGNED)
+   =============================== */
+
+.requests-table .hr-table th:first-child {
+  padding-left: 28px;
+}
+
+.requests-table .hr-table td:first-child {
+  position: relative;
+  padding-left: 28px;
+  font-weight: 600;
+}
+
+.requests-table .hr-table td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2563eb, #38bdf8);
+}
+
+/* ===============================
+   REQUEST ACTION BUTTONS
+   =============================== */
+
+.hr-request-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Approve */
+.hr-approve-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.9),
+    rgba(16, 185, 129, 0.9)
+  );
+  color: #ecfdf5;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hr-approve-btn:hover {
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Reject */
+.hr-reject-btn {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.85),
+    rgba(220, 38, 38, 0.85)
+  );
+  color: #fee2e2;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hr-reject-btn:hover {
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   REQUEST INLINE PREVIEW
+   =============================== */
+
+.hr-request-row {
+  cursor: pointer;
+}
+
+.hr-request-preview-row td {
+  padding: 0;
+  border: none;
+}
+
+.hr-request-preview {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 8px 0 12px;
+  border-radius: 10px;
+  font-size: 14px;
   color: #e5e7eb;
 }
 
-/* Custom bullet */
-.hr-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 18px;
-  line-height: 1;
-  color: var(--accent);
+.hr-request-preview p {
+  margin: 4px 0;
 }
 
 /* ===============================
-   PAGE HEADER SPACING FIX
+   REQUEST STATUS + ACTION ALIGN
    =============================== */
 
-.hr-page-header {
-  margin-bottom: 24px;
-  /* increases gap before table/cards */
+.hr-request-status-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers everything horizontally */
+  gap: 8px;              /* space between badge and buttons */
+}
+
+/* Center buttons under Pending */
+.hr-request-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
 }

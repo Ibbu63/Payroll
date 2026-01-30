@@ -22,6 +22,10 @@ import HRLayout from "./pages/hr/HRLayout";
 import HRDashboard from "./pages/hr/HRDashboard";
 import Employees from "./pages/hr/Employees";
 import Approvals from "./pages/hr/Approvals";
+import Loans from "./pages/hr/Loans";
+import Reports from "./pages/hr/Reports";
+import Requests from "./pages/hr/Requests";
+
 
 function App() {
   return (
@@ -55,6 +59,9 @@ function App() {
         <Route path="dashboard" element={<HRDashboard />} />
         <Route path="employees" element={<Employees />} />
         <Route path="approvals" element={<Approvals />} />
+        <Route path="loans" element={<Loans />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="requests" element={<Requests />} />
       </Route>
 
       {/* FALLBACK */}

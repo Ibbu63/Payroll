@@ -38,7 +38,7 @@ const Approvals = () => {
         <p className="hr-subtext">Review and manage pending HR approvals</p>
       </div>
 
-      <div className="hr-card">
+      <div className="hr-card approvals-table">
         <table className="hr-table">
           <thead>
             <tr>
@@ -51,14 +51,23 @@ const Approvals = () => {
           <tbody>
             {approvals.map((item) => (
               <tr key={item.id}>
-                <td>{item.employee}</td>
+                <td className="hr-employee-cell">
+                  <div className="hr-avatar">
+                    {item.employee
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <span>{item.employee}</span>
+                </td>
+
                 <td>{item.type}</td>
                 <td>{item.date}</td>
                 <td>
                   <span
                     className={`hr-status ${
                       item.status === "Approved"
-                        ? "status-success"
+                        ? "status-approved"
                         : "status-pending"
                     }`}
                   >
