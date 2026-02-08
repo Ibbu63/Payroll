@@ -34,38 +34,39 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
+  "http://localhost:5000/api/auth/login",
+  { email, password }
+);
 
-      const { token, role } = res.data;
+const { token, user } = res.data;
+const role = user.role; // 🔥 THIS WAS THE MISSING PIECE
 
-      // 🔐 Store EXACT backend values
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
+localStorage.setItem("token", token);
+localStorage.setItem("role", role);
 
-      // 🔁 SINGLE, AUTHORITATIVE REDIRECT
-      switch (role) {
-        case "admin":
-          navigate("/admin", { replace: true });
-          break;
+switch (role) {
+  case "admin":
+    navigate("/admin/dashboard", { replace: true });
+    break;
 
-        case "PAYROLL_MANAGER":
-          navigate("/payroll/dashboard", { replace: true });
-          break;
+  case "PAYROLL_MANAGER":
+    navigate("/payroll/dashboard", { replace: true });
+    break;
 
-        case "HR":
-          navigate("/hr", { replace: true });
-          break;
+  case "HR":
+    navigate("/hr/dashboard", { replace: true });
+    break;
 
-        case "EMPLOYEE":
-          navigate("/employee", { replace: true });
-          break;
+  case "EMPLOYEE":
+    navigate("/employee/dashboard", { replace: true });
+    break;
 
-        default:
-          alert("Unauthorized role");
-          localStorage.clear();
-      }
+  default:
+    console.log("ROLE FROM BACKEND:", role);
+    alert("Unauthorized role");
+    localStorage.clear();
+}
+
     } catch (error) {
       alert(
         error.response?.data?.message || "Login failed. Try again."

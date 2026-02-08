@@ -39,6 +39,18 @@ const payrollRunSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       default: null
+    },
+
+    // ✅ NEW
+    remarks: {
+      type: String,
+      trim: true,
+      default: ""
+    },
+
+    remarksUpdatedAt: {
+      type: Date,
+      default: null
     }
   },
   { timestamps: true }

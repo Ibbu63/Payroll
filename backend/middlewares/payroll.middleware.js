@@ -3,7 +3,7 @@ export const payrollOnly = (req, res, next) => {
     return res.status(401).json({ message: "Not authenticated" });
   }
 
-  const role = req.user.role;
+  const role = req.user.role?.toUpperCase();
 
   // ✅ ALLOW PAYROLL MANAGER + ADMIN
   if (role !== "PAYROLL_MANAGER" && role !== "admin") {

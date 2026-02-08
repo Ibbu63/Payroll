@@ -1,8 +1,14 @@
 import User from "../models/User.js";
+import AccessRequest from "../models/AccessRequest.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// REGISTER USER (REQUEST ACCESS)
+/**
+ * ============================
+ * REGISTER USER → REQUEST ACCESS
+ * ============================
+ * Creates entry in AccessRequest (NOT User)
+ */
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password, role, department } = req.body;
@@ -11,24 +17,37 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "All fields required" });
     }
 
+    // Prevent duplicate users
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({ message: "User already exists" });
     }
 
+    // Prevent duplicate access requests
+    const existingRequest = await AccessRequest.findOne({
+      email,
+      approvalStatus: "PENDING"
+    });
+
+    if (existingRequest) {
+      return res
+        .status(409)
+        .json({ message: "Access request already submitted" });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({
+    await AccessRequest.create({
       name,
       email,
       password: hashedPassword,
-      role,
+      requestedRole: role,     // ✅ FIX
       department,
-      isApproved: role === "EMPLOYEE" ? true : false
+      approvalStatus: "PENDING"
     });
 
     res.status(201).json({
-      message: "Registration successful. Await admin approval."
+      message: "Access request submitted. Await admin approval."
     });
   } catch (error) {
     console.error("Register error:", error);
@@ -36,54 +55,59 @@ export const registerUser = async (req, res) => {
   }
 };
 
-// LOGIN USER (SECURE + RBAC SAFE)
+
+/**
+ * ============================
+ * LOGIN USER (ONLY APPROVED USERS)
+ * ============================
+ */
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      return res
-        .status(400)
-        .json({ message: "Email and password required" });
-    }
-
     const user = await User.findOne({ email });
+    console.log("LOGIN USER FOUND:", user);
+
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    if (!user.isApproved) {
-      return res
-        .status(403)
-        .json({ message: "Account pending admin approval" });
-    }
-
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log("PASSWORD MATCH:", isMatch);
+
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    console.log("USER STATUS:", user.status);
+
+    if (!user.isApproved) {
+  return res.status(403).json({
+    message: "Account pending admin approval"
+  });
+}
+
+
+    console.log("✅ PASSED APPROVAL CHECK");
+
     const token = jwt.sign(
-      {
-        userId: user._id,
-        role: user.role
-      },
+      { userId: user._id.toString(), role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
 
-    res.status(200).json({
-      message: "Login successful",
+    return res.status(200).json({
       token,
-      role: user.role,
       user: {
         id: user._id,
-        name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role,
+        status: user.status
       }
     });
-  } catch (error) {
-    console.error("Login error:", error);
-    res.status(500).json({ message: "Server error" });
+
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+    return res.status(500).json({ message: "Server error" });
   }
 };

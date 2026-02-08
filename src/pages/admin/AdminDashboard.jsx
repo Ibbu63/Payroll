@@ -10,6 +10,7 @@ import StatCard from "../../components/admin/StatCard";
 import RecentActivities from "../../components/admin/RecentActivities";
 import QuickActions from "../../components/admin/QuickActions";
 import SystemHealth from "../../components/admin/SystemHealth";
+import PayrollHistoryBar from "../../components/admin/PayrollHistoryBar";
 
 export default function AdminDashboard() {
   useEffect(() => {
@@ -18,6 +19,17 @@ export default function AdminDashboard() {
 
   return (
     <>
+
+      {/* ANALYTICS */}
+      <section className="analytics-section">
+        <h2 className="section-title">Analytics Overview</h2>
+
+        <div className="analytics-grid analytics-2col">
+          <PayrollHistoryBar />
+        </div>
+      </section>
+
+      {/* KPI CARDS */}
       <div className="stats-grid">
         <StatCard
           title="Total Employees"
@@ -28,7 +40,7 @@ export default function AdminDashboard() {
 
         <StatCard
           title="Monthly Payroll"
-          value="$428,500"
+          value="₹428,500"
           icon={<FaMoneyCheckAlt />}
         />
 
@@ -46,6 +58,7 @@ export default function AdminDashboard() {
         />
       </div>
 
+      {/* OPERATIONAL SECTION */}
       <div className="content-grid">
         <RecentActivities />
 

@@ -102,6 +102,7 @@ export default function PayrollOversight() {
 
       {/* TIMELINE */}
       <div className="timeline-grid">
+        
         {current.timeline.map((item, i) => (
           <div key={i} className={`timeline-card ${item.status}`}>
             <span className="tag">{item.status}</span>
@@ -123,6 +124,7 @@ export default function PayrollOversight() {
           </p>
         </div>
 
+        <div className="stat-card highlight">
         <div className="stat-card">
           <h5>Tax Withholdings</h5>
           <h2>{current.stats.tax}</h2>
@@ -130,12 +132,15 @@ export default function PayrollOversight() {
             {view === "monthly" ? "Monthly deductions" : "Quarterly deductions"}
           </p>
         </div>
+        </div>
 
+        <div className="stat-card highlight">
         <div className="stat-card">
           <h5>Employer Contributions</h5>
           <h2>{current.stats.employer}</h2>
           <p className="positive">Benefits, PF & insurance</p>
         </div>
+      </div>
       </div>
 
       {/* CHARTS */}

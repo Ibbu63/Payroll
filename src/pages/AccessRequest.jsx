@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/AccessRequest.css";
+import { Link } from "react-router-dom";
 
 const AccessRequest = () => {
   const [role, setRole] = useState("");
@@ -81,6 +82,11 @@ const AccessRequest = () => {
         <button className="submit-btn">
           Submit Access Request →
         </button>
+
+        <p className="login-link">
+           Already have an account?{" "}
+        <Link to="/login"> Login here </Link>
+        </p>
 
         <p className="footer-text">
           By submitting, you agree to the <span>Security Protocol</span> and{" "}

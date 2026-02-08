@@ -40,6 +40,31 @@ const userSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       default: null
+    },
+
+    // 🔽 HR-NEEDED ADDITIONS (no breaking changes)
+
+    employeeId: {
+      type: String,
+      unique: true,
+      sparse: true // allows null for HR/Admin users
+    },
+
+    employmentStatus: {
+      type: String,
+      enum: ["ACTIVE", "ON_HOLD", "EXITED"],
+      default: "ACTIVE"
+    },
+
+    joiningDate: {
+      type: Date,
+      default: null
+    },
+
+    approvedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null
     }
   },
   { timestamps: true }

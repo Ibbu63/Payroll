@@ -31,24 +31,42 @@ const PayrollDashboard = () => {
         }
       );
 
+      const runsData = res.data.data; // ✅ FIX
+
       let ready = 0;
       let processing = 0;
       let gross = 0;
 
-      res.data.forEach(r => {
+      runsData.forEach(r => {
         if (r.status === "READY_FOR_PAYROLL") ready++;
         if (r.status === "PROCESSING") processing++;
         gross += r.grossPay;
       });
 
-      setRuns(res.data);
+      setRuns(runsData);
       setStats({ ready, processing, gross });
     } catch (err) {
-      console.error("Failed to fetch payroll runs", err);
+      console.error("Failed to fetch payroll runs", err.response?.data || err);
     } finally {
       setLoading(false);
     }
   }, [token]);
+
+  // ACTION HANDLERS
+  const handleAction = async (id, action) => {
+    try {
+      await axios.post(
+        `${API_BASE}/api/payroll/${action}/${id}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+      fetchRuns(); // refresh UI
+    } catch (err) {
+      console.error(`Failed to ${action} payroll`, err.response?.data || err);
+    }
+  };
 
   useEffect(() => {
     fetchRuns();
@@ -132,13 +150,28 @@ const PayrollDashboard = () => {
                 </td>
                 <td>
                   {run.status === "READY_FOR_PAYROLL" && (
-                    <button className="btn primary">Start</button>
+                    <button
+                      className="btn primary"
+                      onClick={() => handleAction(run._id, "start")}
+                    >
+                      Start
+                    </button>
                   )}
                   {run.status === "PROCESSING" && (
-                    <button className="btn warning">Complete</button>
+                    <button
+                      className="btn warning"
+                      onClick={() => handleAction(run._id, "complete")}
+                    >
+                      Complete
+                    </button>
                   )}
                   {run.status === "COMPLETED" && (
-                    <button className="btn secondary">Send</button>
+                    <button
+                      className="btn secondary"
+                      onClick={() => handleAction(run._id, "send")}
+                    >
+                      Send
+                    </button>
                   )}
                   {run.status === "SENT_TO_ADMIN" && (
                     <span className="locked">Locked</span>

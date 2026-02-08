@@ -2,13 +2,26 @@ import mongoose from "mongoose";
 
 const accessRequestSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: {
+    name: {
       type: String,
-      enum: ["HR", "PAYROLL_MANAGER", "EMPLOYEE"],
       required: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    requestedRole: {
+      type: String,
+      enum: ["admin","HR", "PAYROLL", "PAYROLL_MANAGER","EMPLOYEE"],
+      required: true
+    },
+    department: {
+      type: String
     },
     status: {
       type: String,
@@ -19,8 +32,4 @@ const accessRequestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/**
- * 🔑 THIS LINE PREVENTS OverwriteModelError
- */
-export default mongoose.models.AccessRequest ||
-  mongoose.model("AccessRequest", accessRequestSchema);
+export default mongoose.model("AccessRequest", accessRequestSchema);
